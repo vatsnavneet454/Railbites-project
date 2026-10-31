@@ -1,0 +1,7 @@
+/* Browser-only project storage. Not suitable for production credentials or sensitive data. */
+const RB={K:{users:"rb_users_v2",session:"rb_session_v2",menu:"rb_menu_v2",orders:"rb_orders_v2",complaints:"rb_complaints_v2",checks:"rb_checks_v2", stationSearches:"rb_station_searches_v2", hygieneLogs:"rb_hygiene_logs_v2", reports:"rb_reports_v2"},get(k,f=[]){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}},set(k,v){localStorage.setItem(k,JSON.stringify(v))},user(){return this.get(this.K.session,null)},logout(){localStorage.removeItem(this.K.session);location.href="login.html"},init(){if(!localStorage.getItem(this.K.menu))this.set(this.K.menu,[
+{id:1,name:"North Indian Veg Thali",desc:"Dal, seasonal sabzi, rice, chapati and pickle",price:159,category:"Meals",vendor:"RailBite Kitchen",photo:"FOOD1"},
+{id:2,name:"Paneer Tikka Sandwich",desc:"Grilled sandwich with spiced paneer",price:99,category:"Snacks",vendor:"RailBite Kitchen",photo:"FOOD2"},
+{id:3,name:"Veg Biryani",desc:"Fragrant rice, vegetables and cooling raita",price:149,category:"Meals",vendor:"RailBite Kitchen",photo:"FOOD3"},
+{id:4,name:"Fresh Fruit Bowl",desc:"Seasonal fruit, freshly prepared",price:79,category:"Healthy",vendor:"RailBite Kitchen",photo:"FOOD4"}]);for(const k of [this.K.users,this.K.orders,this.K.complaints,this.K.checks,this.K.stationSearches,this.K.hygieneLogs,this.K.reports])if(!localStorage.getItem(k))this.set(k,[])}};
+RB.init();
